@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using BikeFetchLib.Enums;
 
 namespace BikeFetchLibTest
 {
@@ -13,6 +15,17 @@ namespace BikeFetchLibTest
         {
 
             return RawStationData;
+        }
+
+        public Tuple<ProviderReturnType, byte[]> FetchStaticData()
+        {
+            return new Tuple<ProviderReturnType, byte[]>(ProviderReturnType.StaticAndVariableData,
+                                                         Encoding.UTF8.GetBytes(RawStationData));
+        }
+
+        public byte[] FetchVariableData(string primaryId)
+        {
+            throw new InvalidOperationException("Capital Bikeshare returns static and variable data together.");
         }
     }
 }

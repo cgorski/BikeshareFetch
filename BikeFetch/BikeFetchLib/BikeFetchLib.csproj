@@ -46,16 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapitalBikeshareProvider.cs" />
-    <Compile Include="CapitalBikeshareTranslator.cs" />
-    <Compile Include="FetchFailedException.cs" />
+    <Compile Include="Providers\BrisbaneCityCycleProvider.cs" />
+    <Compile Include="DataPairs\StationDataPair.cs" />
+    <Compile Include="Enums\ProviderReturnType.cs" />
+    <Compile Include="Exceptions\InvalidProviderResponseException.cs" />
+    <Compile Include="Interfaces\IStationDataPair.cs" />
+    <Compile Include="Interfaces\IStationVariable.cs" />
+    <Compile Include="Providers\CapitalBikeshareDataProvider.cs" />
+    <Compile Include="Providers\BikeshareDataProvider.cs" />
+    <Compile Include="Stations\CapitalBikeshareStationVariable.cs" />
+    <Compile Include="Stations\StationStatic.cs" />
+    <Compile Include="Stations\StationVariable.cs" />
+    <Compile Include="Translators\CapitalBikeshareTranslator.cs" />
+    <Compile Include="Exceptions\FetchFailedException.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Station.cs" />
-    <Compile Include="IBikeshareDataTranslator.cs" />
-    <Compile Include="IBikeshareDataProvider.cs" />
+    <Compile Include="Interfaces\IStationStatic.cs" />
+    <Compile Include="Stations\CapitalBikeshareStationStatic.cs" />
+    <Compile Include="Interfaces\IBikeshareDataTranslator.cs" />
+    <Compile Include="Interfaces\IBikeshareDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StationList.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
