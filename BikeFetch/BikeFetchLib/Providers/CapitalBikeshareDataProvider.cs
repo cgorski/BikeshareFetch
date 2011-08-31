@@ -1,23 +1,22 @@
 ﻿using System;
 using BikeFetchLib.Enums;
-using BikeFetchLib.Providers;
 
-namespace BikeFetchLib
+namespace BikeFetchLib.Providers
 {
     public class CapitalBikeshareDataProvider : BikeshareDataProvider
     {
+        private readonly Uri _providerUri;
+
         public CapitalBikeshareDataProvider(Uri providerUri)
         {
-            ProviderUri = providerUri;
+            _providerUri = providerUri;
         }
-
-        public Uri ProviderUri { get; private set; }
 
 
         public override Tuple<ProviderReturnType, byte[]> FetchStaticData()
         {
             return new Tuple<ProviderReturnType, byte[]>(ProviderReturnType.StaticAndVariableData,
-                                                         GetDataViaHttp(ProviderUri));
+                                                         GetDataViaHttp(_providerUri));
         }
 
         public override byte[] FetchVariableData(string primaryId)

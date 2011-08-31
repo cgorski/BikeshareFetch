@@ -45,8 +45,10 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrisbaneCityCycleTranslatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CapitalBikeshareTranslatorTest.cs" />
+    <Compile Include="TestBrisbaneCityCycleProvider.cs" />
     <Compile Include="TestCapitalBikeshareProvider.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +56,13 @@
       <Project>{0A3F3FB4-2B51-40BD-9374-A2735C5DF65F}</Project>
       <Name>BikeFetchLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="RawStationData\BrisbaneCityCycleVariableTestData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RawStationData\BrisbaneCityCycleStaticTestData.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

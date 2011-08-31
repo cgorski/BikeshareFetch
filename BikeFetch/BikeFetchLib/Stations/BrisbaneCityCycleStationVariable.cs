@@ -2,15 +2,14 @@
 
 namespace BikeFetchLib.Stations
 {
-    public class CapitalBikeshareStationVariable : StationVariable
+    public class BrisbaneCityCycleStationVariable : StationVariable
     {
         private readonly DateTime _fetchDate;
         private readonly int _numberOfBikes;
 
         private readonly int _numberOfEmptyDocks;
 
-
-        public CapitalBikeshareStationVariable(int numberOfBikes, int numberOfEmptyDocks, DateTime fetchDate)
+        public BrisbaneCityCycleStationVariable(int numberOfBikes, int numberOfEmptyDocks, DateTime fetchDate)
         {
             _numberOfBikes = numberOfBikes;
             _numberOfEmptyDocks = numberOfEmptyDocks;

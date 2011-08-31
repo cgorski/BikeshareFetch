@@ -1,7 +1,7 @@
 ﻿using System;
 using BikeFetchLib.Enums;
 
-namespace BikeFetchLib
+namespace BikeFetchLib.Interfaces
 {
     public interface IBikeshareDataProvider
     {

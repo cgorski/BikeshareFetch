@@ -2,6 +2,8 @@
 using System.IO;
 using System.Net;
 using BikeFetchLib.Enums;
+using BikeFetchLib.Exceptions;
+using BikeFetchLib.Interfaces;
 
 namespace BikeFetchLib.Providers
 {
@@ -19,7 +21,7 @@ namespace BikeFetchLib.Providers
             using (var memoryStream = new MemoryStream())
             {
                 stream.CopyTo(memoryStream);
-                return memoryStream.GetBuffer();
+                return memoryStream.ToArray();
             }
         }
 

@@ -11,11 +11,10 @@ using BikeFetchLib.Exceptions;
 using BikeFetchLib.Interfaces;
 using BikeFetchLib.Stations;
 
-namespace BikeFetchLib
+namespace BikeFetchLib.Translators
 {
-    public class CapitalBikeshareTranslator : IBikeshareDataTranslator
+    public class CapitalBikeshareTranslator : BikeshareDataTranslator
     {
-        private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         private readonly IBikeshareDataProvider _provider;
 
         public CapitalBikeshareTranslator(IBikeshareDataProvider provider)
@@ -23,9 +22,7 @@ namespace BikeFetchLib
             _provider = provider;
         }
 
-        #region IBikeshareDataTranslator Members
-
-        public ReadOnlyCollection<IStationDataPair> FetchStationList()
+        public override ReadOnlyCollection<IStationDataPair> FetchCombinedList()
         {
             Tuple<ProviderReturnType, byte[]> fetchResponse = _provider.FetchStaticData();
             if (fetchResponse.Item1 == ProviderReturnType.StaticDataOnly)
@@ -78,13 +75,22 @@ namespace BikeFetchLib
             }
         }
 
-        #endregion
-
-        private static DateTime? UnixTimeInMsToNullableDateTime(string time)
+        public override ReadOnlyCollection<IStationStatic> FetchStaticList()
         {
-            if (time.Trim().Length > 0)
-                return Epoch.AddMilliseconds(UInt64.Parse(time, CultureInfo.InvariantCulture));
-            return null;
+            ReadOnlyCollection<IStationDataPair> stationData = FetchCombinedList();
+            return new ReadOnlyCollection<IStationStatic>((from s in stationData select s.StationStaticData).ToList());
+        }
+
+        public override IStationVariable FetchVariableData(string stationPrimaryId)
+        {
+            ReadOnlyCollection<IStationDataPair> stationData = FetchCombinedList();
+            IStationVariable variableData =
+                (from s in stationData
+                 where s.StationStaticData.PrimaryId == stationPrimaryId
+                 select s.StationVariableDataList[0]).First();
+            if (variableData == null)
+                throw new Exception("stationPrimaryId not found");
+            return variableData;
         }
     }
 }

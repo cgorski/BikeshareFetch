@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
-using BikeFetchLib.Interfaces;
 
-namespace BikeFetchLib
+namespace BikeFetchLib.Interfaces
 {
     public interface IBikeshareDataTranslator
     {
-        ReadOnlyCollection<IStationDataPair> FetchStationList();
+        ReadOnlyCollection<IStationDataPair> FetchCombinedList();
+        ReadOnlyCollection<IStationStatic> FetchStaticList();
+        IStationVariable FetchVariableData(string stationPrimaryId);
     }
 }

@@ -11,6 +11,8 @@ namespace BikeFetchLib.Interfaces
         Decimal Longitude { get; }
         DateTime? InstallDate { get; }
         DateTime? RemovalDate { get; }
+        bool Installed { get; }
+        bool Locked { get; }
         DateTime FetchDate { get; }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Globalization;
-using BikeFetchLib.Stations;
 
-namespace BikeFetchLib
+namespace BikeFetchLib.Stations
 {
     public class CapitalBikeshareStationStatic : StationStatic
     {
         private readonly string _commonName;
         private readonly DateTime _fetchDate;
+
         private readonly int _id;
         private readonly DateTime? _installDate;
 

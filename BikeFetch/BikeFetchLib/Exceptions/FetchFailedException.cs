@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace BikeFetchLib
+namespace BikeFetchLib.Exceptions
 {
     [Serializable]
     public class FetchFailedException : Exception

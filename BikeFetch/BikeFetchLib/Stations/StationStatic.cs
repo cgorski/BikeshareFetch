@@ -5,9 +5,6 @@ namespace BikeFetchLib.Stations
 {
     public abstract class StationStatic : IEquatable<StationStatic>, IStationStatic
     {
-        public abstract bool Installed { get; }
-        public abstract bool Locked { get; }
-
         #region IEquatable<StationStatic> Members
 
         public bool Equals(StationStatic other)
@@ -18,6 +15,9 @@ namespace BikeFetchLib.Stations
         #endregion
 
         #region IStationStatic Members
+
+        public abstract bool Installed { get; }
+        public abstract bool Locked { get; }
 
         public abstract string PrimaryId { get; }
         public abstract string CommonName { get; }
